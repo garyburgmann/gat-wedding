@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
+  // Button,
+  // Container,
+  // Divider,
+  // Grid,
+  // Header,
+  // Icon,
+  // Image,
+  // List,
+  // Menu,
   Segment,
-  Visibility,
+  // Visibility,
 } from 'semantic-ui-react';
-import FixedMenu from '../components/Menu';
+// import FixedMenu from '../components/Menu';
 import Jumbotron from '../components/Jumbotron';
 import banner from '../assets/images/cover.jpg'; // Tell Webpack this JS file uses this image
 
@@ -21,21 +21,41 @@ export default class HomeComponent extends Component {
    //
   }
 
-  hideFixedMenu = () => this.setState({ visible: false })
-  showFixedMenu = () => this.setState({ visible: true })
+  // hideFixedMenu = () => this.setState({ visible: false })
+  // showFixedMenu = () => this.setState({ visible: true })
 
   render() {
-    const { visible } = this.state
+    // const { visible } = this.state
 
     return (
       <div>
-        { visible ? <FixedMenu visible={this.state.visible} /> : null }
+        
+        {/* { visible ? <FixedMenu visible={this.state.visible} /> : null } */}
 
-        <Visibility
+        {/* <Segment style={{ padding: '8em 0em' }} vertical>
+          <Grid container stackable verticalAlign='middle'>
+            
+            <Grid.Row>
+              <Grid.Column textAlign='center'>
+                <Header as='h5' style={{ fontSize: '5em', color: 'rgb(36, 184, 159)', fontFamily: `'Libre Baskerville', serif` }}> Gary <span style={{ fontSize: '1em', color: 'grey'}}> & </span> Katrina  </Header>
+                <hr/>
+                <Header as='h5' style={{ fontSize: '10em', color: 'grey', fontWeight: '5em', fontFamily: `'Libre Baskerville', serif` }}> & </Header>
+                <Header as='h5' style={{ fontSize: '5em', color: 'rgb(36, 184, 159)', fontFamily: `'Libre Baskerville', serif`  }}> Katrina </Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='center'>
+                <Header as='h4' style={{ fontSize: '1em', color: 'grey', fontWeight: 'bold' }}> INVITE YOU TO CELEBRATE AT THEIR WEDDING </Header>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment> */}
+
+        {/* <Visibility
           onBottomPassed={this.showFixedMenu}
           onBottomVisible={this.hideFixedMenu}
           once={false}
-        >
+        > */}
           <Segment
             inverted
             textAlign='center'
@@ -44,44 +64,15 @@ export default class HomeComponent extends Component {
             raised
           >
         
-            <FixedMenu visible={this.state.visible} />
+            {/* <FixedMenu visible={this.state.visible} /> */}
 
             <Jumbotron />
           </Segment>
-        </Visibility>
+        {/* </Visibility> */}
 
-        <Segment style={{ padding: '8em 0em' }} vertical>
-          <Grid container stackable verticalAlign='middle'>
-            <Grid.Row>
-              <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Help Companies and Companions</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  We can give your company superpowers to do things that they never thought possible. Let us delight
-                  your customers and empower your needs... through pure data analytics.
-                </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                </p>
-              </Grid.Column>
-              <Grid.Column floated='right' width={6}>
-                <Image
-                  bordered
-                  rounded
-                  size='large'
-                  src='/assets/images/wireframe/white-image.png'
-                />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column textAlign='center'>
-                <Button size='huge'>Check Them Out</Button>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
+        
 
-        <Segment style={{ padding: '0em' }} vertical>
+        {/* <Segment style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
@@ -157,7 +148,7 @@ export default class HomeComponent extends Component {
               </Grid.Row>
             </Grid>
           </Container>
-        </Segment>
+        </Segment> */}
       </div>
     )
   }

@@ -2,4 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /* font-family: 'Bellefair', serif; */
+
+}
+
+.test {
+  color: rgb(36, 184, 159);
+}
+
+.test2 {
+  color: rgb(128, 128, 128)
 }
