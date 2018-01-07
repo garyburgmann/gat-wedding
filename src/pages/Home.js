@@ -9,7 +9,7 @@ import {
   // Image,
   // List,
   // Menu,
-  Segment,
+  // Segment,
   // Visibility,
 } from 'semantic-ui-react';
 // import FixedMenu from '../components/Menu';
@@ -28,7 +28,7 @@ export default class HomeComponent extends Component {
     // const { visible } = this.state
 
     return (
-      <div>
+      <div style={{minHeight: '100%'}}>
        <Jumbotron />
       </div>
     )

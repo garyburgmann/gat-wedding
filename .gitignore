@@ -22,3 +22,6 @@ yarn-error.log*
 
 mockup.jpg
 mockup2.jpg
+
+#firebase credentials
+src/fire.js

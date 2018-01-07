@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import {
   Container,
   Header,
-  Segment
+  Segment,
+  Button
 } from 'semantic-ui-react';
 // import _ from 'lodash';
 import FixedMenu from './Menu';
 import TimerComponent from './Timer';
 import banner from '../assets/images/cover.jpg'; // Tell Webpack this JS file uses this image
+import fire from '../fire';
+
 
 export default class Jumbotron extends Component {
+
   state = {
-    //
+
   }
 
   render() {
@@ -19,7 +23,7 @@ export default class Jumbotron extends Component {
       <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em', background: `#fff url('${banner}') no-repeat center center `, backgroundSize: 'cover'}}
+            style={{ minHeight: 800, padding: '1em 0em', background: `#000 url('${banner}') no-repeat center center `, backgroundSize: 'cover'}}
             vertical
             raised
       >
@@ -45,6 +49,7 @@ export default class Jumbotron extends Component {
             style={{ fontSize: '3em', fontWeight: 'bold', fontFamily: `'Libre Baskerville', serif` }}
           />
           <TimerComponent />
+          
           {/* <TimerComponent setTimer={this.state.setTimer} /> */}
           {/* <Button primary size='huge'>
             Get Started
