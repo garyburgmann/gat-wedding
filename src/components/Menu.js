@@ -31,7 +31,7 @@ export default class FixedMenu extends Component {
     render() {
       return (
         <Container>
-          <Menu inverted fluid secondary size='massive' text widths={6} >
+          <Menu inverted fluid secondary size='massive' stackable text widths={6} >
             <Menu.Item as='a' active>Home</Menu.Item>
             <Menu.Item as='a'>Accommodation</Menu.Item>
             <Menu.Item as='a'>Location</Menu.Item>
