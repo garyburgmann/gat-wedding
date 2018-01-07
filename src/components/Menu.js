@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   // Button,
   Container,
   Menu,
+  // Link
 } from 'semantic-ui-react'
 
 
@@ -34,7 +36,7 @@ export default class FixedMenu extends Component {
           <Menu inverted fluid secondary size='massive' stackable text widths={6} >
             <Menu.Item as='a' active>Home</Menu.Item>
             <Menu.Item as='a'>Accommodation</Menu.Item>
-            <Menu.Item as='a'>Location</Menu.Item>
+            <Menu.Item as={ Link } name='location' to='location'>Location</Menu.Item>
             <Menu.Item as='a'>RSVP</Menu.Item>
             {/* <Menu.Menu position='right'>
               <Menu.Item className='item'>

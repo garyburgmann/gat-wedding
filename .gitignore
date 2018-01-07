@@ -25,3 +25,6 @@ mockup2.jpg
 
 #firebase credentials
 src/fire.js
+
+#gmaps
+src/gmapsKey.js

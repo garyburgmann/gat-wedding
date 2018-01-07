@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react';
 // import FixedMenu from '../components/Menu';
 import Jumbotron from '../components/Jumbotron';
+import MapsComponent from '../components/MapComponent'
 
 
 export default class HomeComponent extends Component {
@@ -29,6 +30,7 @@ export default class HomeComponent extends Component {
     return (
       <div style={{minHeight: '100%'}}>
        <Jumbotron />
+       {/* <MapsComponent /> */}
       </div>
     )
   }

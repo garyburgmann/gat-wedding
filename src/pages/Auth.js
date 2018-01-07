@@ -1,20 +1,25 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 import xavier from '../assets/images/Xavier.jpg'; // Tell Webpack this JS file uses this image
-
+import AuthService from '../services/AuthService';
 
 export default class AuthComponent extends Component {
 
-  state = { password: '', email: '', submittedPassword: '', submittedEmail: '' }
+  state = { password: '', email: 'admin@admin.com', submittedPassword: '', submittedEmail: '' }
 
+  _authService = new AuthService();
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit = () => {
-    const { password, email } = this.state
+    const { password, email } = this.state;
 
-    this.setState({ submittedPassword: password, submittedEmail: email })
+    this.setState({ submittedPassword: password, submittedEmail: email });
     console.log("PW: ", this.state.password)
-    this.props.checkPassword(this.state.password);
+
+    this._authService.fireLogin(password);
+    // this._authService.fireLogin(password);
+    // this.props.checkLogin(password);
   }
 
   render() {

@@ -1,52 +1,84 @@
 import React, {Component} from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
+import MapComponent from './components/MapComponent'
+import AuthService from './services/AuthService';
 import fire from './fire';
 
+
 class App extends Component {
+
 
   state = {
     auth: '',
     isLoggedIn: false
   }
 
-  componentWillMount(){
-    /* Create reference to messages in Firebase Database */
-    let authRef = fire.database().ref('auth');
-    authRef.once('value', snapshot => {
-      /* Update React state when page loaded is added at Firebase Database */
-      let a = { text: snapshot.val(), id: snapshot.key };
-      // console.log('FIREBASE AUTH: ', a);
-      this.setState({ auth: a.text });
-    })
+  _authService = new AuthService();
+
+
+  componentDidMount(){
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log('User currently signed in');
+        this.setState({ isLoggedIn: true });
+      } else {
+        console.log('No user currently signed in');
+        this.setState({ isLoggedIn: false });
+      }
+      this.render();
+    });
+    
+    
+    // /* Create reference to messages in Firebase Database */
+    // localStorage.setItem('loggedIn', false);
+    // console.log(localStorage.getItem('loggedIn'));
+    // let authRef = fire.database().ref('auth');
+    // authRef.once('value', snapshot => {
+    //   /* Update React state when page loaded is added at Firebase Database */
+    //   let a = { text: snapshot.val(), id: snapshot.key };
+    //   // console.log('FIREBASE AUTH: ', a);
+    //   this.setState({ auth: a.text });
+    // })
   }
 
-  checkPassword(pw) {
-    // console.log('CP PW: ', pw);
-    // console.log('CP State: ', this.state.auth);
-    if (pw === this.state.auth) {
-      this.setState({ isLoggedIn: true });
-    }
+  componentWillUnmount() {
+    this._authService.fireLogout();
   }
-  // renderLogin(){
-  //   <div>
-  //      <AuthComponent />
-  //   </div>
+
+  // checkLogin(pw) {
+  //   let _authService = new AuthService();
+  //   _authService.fireLogin(pw);
+  //   let jedi = _authService.fireIsUser();
+  //   setTimeout(() => {
+  //     console.log(jedi);
+  //     this.setState({ isLoggedIn: jedi });
+  //   }, 100);
   // }
 
-  // renderHome(){
-  //   <div>
-  //      <HomeComponent />
-  //   </div>
-  // }
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
-    if (isLoggedIn) {
-      return <HomeComponent />;
+    const isUser = this.state.isLoggedIn;
+    // console.log(this.state.isLoggedIn);
+    if (isUser) {
+      return (
+        <div>
+          <BrowserRouter>
+            <div>
+              <Switch>
+                {/* <Route path="/listview" component={() => (<ListView />)} /> */}
+                <Route path="/location" component={() => (<MapComponent />)} />
+                <Route path="/auth" component={() => (<AuthComponent  />)} />
+                <Route path="/" component={() => (<HomeComponent />)} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </div>
+      );
     } else {
-      return <AuthComponent checkPassword={pw => this.checkPassword(pw)}/>;
+      return <AuthComponent  />;
     }
   }
 }

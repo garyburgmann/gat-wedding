@@ -3,13 +3,13 @@ import {
   Container,
   Header,
   Segment,
-  Button
+  // Button
 } from 'semantic-ui-react';
 // import _ from 'lodash';
 import FixedMenu from './Menu';
 import TimerComponent from './Timer';
 import banner from '../assets/images/cover.jpg'; // Tell Webpack this JS file uses this image
-import fire from '../fire';
+// import fire from '../fire';
 
 
 export default class Jumbotron extends Component {

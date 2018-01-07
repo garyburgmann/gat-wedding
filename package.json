@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "firebase": "^4.8.1",
+    "firebaseui": "^2.5.1",
+    "google-maps-react": "^1.1.2",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-count-down": "^1.1.0",
     "react-countdown-date": "^1.0.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.1"
