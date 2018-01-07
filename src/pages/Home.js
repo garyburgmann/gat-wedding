@@ -18,7 +18,6 @@ import Jumbotron from '../components/Jumbotron';
 
 export default class HomeComponent extends Component {
   state = {
-   //
   }
 
   // hideFixedMenu = () => this.setState({ visible: false })

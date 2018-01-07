@@ -50,11 +50,6 @@ export default class Jumbotron extends Component {
           />
           <TimerComponent />
           
-          {/* <TimerComponent setTimer={this.state.setTimer} /> */}
-          {/* <Button primary size='huge'>
-            Get Started
-            <Icon name='right arrow' />
-          </Button> */}
         </Container>
       </Segment>
     );
