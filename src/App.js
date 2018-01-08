@@ -20,6 +20,7 @@ class App extends Component {
 
 
   componentDidMount(){
+    // console.log(fire);
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log('User currently signed in');

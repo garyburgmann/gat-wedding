@@ -36,6 +36,7 @@ export class MapComponent extends Component {
   }
 
   render() {
+    // console.log(config.apiKey);
     return (
       <div>
         {/* <FixedMenu  /> */}
@@ -69,5 +70,5 @@ export class MapComponent extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyB56-QFW1QRhr8lMDXD-NBYWUoswCUUrgA'
+  apiKey: config.apiKey
 })(MapComponent)
