@@ -49,6 +49,11 @@ export class MapComponent extends Component {
         >
           <Marker onClick={this.onMarkerClick}
                   name={'Gat Ceremony Location'} />
+          <Marker
+          onClick={this.onMarkerClick}
+            title={'The marker`s title will appear as a tooltip.'}
+            name={'Gat Reception Location (Babalou is upstairs)'}
+            position={{lat: -28.2554067, lng: 153.5760453}} />
 
           <InfoWindow
             marker={this.state.activeMarker}
@@ -64,5 +69,5 @@ export class MapComponent extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: config.apiKey
+  apiKey: 'AIzaSyB56-QFW1QRhr8lMDXD-NBYWUoswCUUrgA'
 })(MapComponent)

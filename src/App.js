@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
-import MapComponent from './components/MapComponent'
+import GoogleApiWrapper from './components/MapComponent'
 import AuthService from './services/AuthService';
 import fire from './fire';
 
@@ -69,7 +69,7 @@ class App extends Component {
             <div>
               <Switch>
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
-                <Route path="/location" component={() => (<MapComponent />)} />
+                <Route path="/location" component={() => (<GoogleApiWrapper />)} />
                 <Route path="/auth" component={() => (<AuthComponent  />)} />
                 <Route path="/" component={() => (<HomeComponent />)} />
               </Switch>
