@@ -5,7 +5,7 @@ import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
 import GoogleApiWrapper from './components/MapComponent'
 import AuthService from './services/AuthService';
-import fire from './fire';
+import fire from './environments/fire';
 
 
 class App extends Component {
