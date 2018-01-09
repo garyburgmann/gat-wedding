@@ -39,8 +39,8 @@ export class MapComponent extends Component {
   }
 
   fetchPlaces(mapProps, map) {
-    const {google} = mapProps;
-    const service = new google.maps.places.PlacesService(map);
+    // const {google} = mapProps;
+    // const service = new google.maps.places.PlacesService(map);
     // // ...
     // console.log(mapProps);
   }
@@ -77,7 +77,7 @@ export class MapComponent extends Component {
     // console.log(dest);
     return (
       <div>
-        {/* <FixedMenu  /> */}
+        
         <Map google={this.props.google}
             onReady={this.fetchPlaces}
             onClick={this.onMapClicked}
@@ -87,6 +87,7 @@ export class MapComponent extends Component {
             }}
             zoom={16}
         >
+        <FixedMenu  />
         {/* <Listing places={this.state.places} /> */}
           {/* <Marker onClick={this.onMarkerClick}
                   name={'Gat Ceremony Location'} />

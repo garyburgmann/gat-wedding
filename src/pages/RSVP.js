@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, 
+         Grid, 
+         Header, 
+         Message, 
+         Segment 
+} from 'semantic-ui-react'
 import {
   Form,
   StyledText,
@@ -9,8 +14,11 @@ import {
   StyledSelect,
   StyledCheckbox
 } from 'react-form';
-require('./rsvp.css');
-
+import MediaQuery from 'react-responsive';
+import './rsvp.css';
+import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
+// import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
+import FixedMenu from '../components/Menu';
 
 const statusOptions = [
   {
@@ -112,9 +120,8 @@ export default class ExampleForm extends Component {
     };
   }
 
-  render() {
-    return (
-      <div className='rsvp-form'>
+  content = (
+    <div className='rsvp-form'>
         {/*
           Heads up! The styles below are necessary for the correct render of this example.
           You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -134,10 +141,10 @@ export default class ExampleForm extends Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             {/* <Image src={xavier} /> */}
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as='h2' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
               RSVP Details Form
             </Header>
-            <Header as='h5' color='teal' textAlign='center'>
+            <Header as='h4' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
               Please fill a copy of the form for <u><em>each</em></u> person attending
             </Header>
             <Form
@@ -178,6 +185,37 @@ export default class ExampleForm extends Component {
             </Message> */}
           </Grid.Column>
         </Grid>
+      </div>
+  );
+
+  render() {
+    return (
+      <div>
+        <MediaQuery query="(min-device-width: 850px)">
+          <Segment
+                inverted
+                textAlign='center'
+                style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}}
+                vertical
+                raised
+          >
+          <FixedMenu  />
+          {this.content}
+          </Segment>
+        </MediaQuery>
+
+        <MediaQuery query="(max-device-width: 849px)">
+          <Segment
+                inverted
+                textAlign='center'
+                style={{minHeight: '100vh', padding: '1em 0em', background: `teal`, backgroundSize: 'cover'}}
+                vertical
+                raised
+          >
+          <FixedMenu  />
+          {this.content}
+          </Segment>
+        </MediaQuery>
       </div>
     );}
 }

@@ -35,7 +35,7 @@ export default class FixedMenu extends Component {
       return (
         <Container>
           <Menu inverted fluid secondary size='massive' stackable text widths={4} >
-            <Menu.Item as={ Link } name='location' to='location' active> <Icon name='home'  /> Home </Menu.Item>
+            <Menu.Item as={ Link } name='home' to='/' active> <Icon name='home'  /> Home </Menu.Item>
             <Menu.Item as='a'> <Icon name='hotel'  /> Accommodation </Menu.Item>
             <Menu.Item as={ Link } name='location' to='location'> <Icon name='map signs' /> Location </Menu.Item>
             <Menu.Item as={ Link } name='rsvp' to='rsvp' > <Icon name='signup' /> RSVP </Menu.Item>

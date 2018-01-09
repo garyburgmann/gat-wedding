@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, 
+         Form, 
+         Grid, 
+         Header, 
+         Image, 
+         Message, 
+         Segment 
+} from 'semantic-ui-react'
 // import { Link } from 'react-router-dom';
 import xavier from '../assets/images/Xavier.jpg'; // Tell Webpack this JS file uses this image
 // import AuthService from '../services/AuthService';
@@ -75,7 +82,7 @@ export default class AuthComponent extends Component {
             </Form>
             <Message>
               Password is on your invitation :) <br />
-              (Hint: 'open seasame' won't work)
+              (Hint: 'open sesame' won't work)
             </Message>
           </Grid.Column>
         </Grid>
