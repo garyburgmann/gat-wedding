@@ -4,6 +4,7 @@ import {
   // Button,
   Container,
   Menu,
+  Icon
   // Link
 } from 'semantic-ui-react'
 
@@ -33,11 +34,11 @@ export default class FixedMenu extends Component {
     render() {
       return (
         <Container>
-          <Menu inverted fluid secondary size='massive' stackable text widths={6} >
-            <Menu.Item as='a' active>Home</Menu.Item>
-            <Menu.Item as='a'>Accommodation</Menu.Item>
-            <Menu.Item as={ Link } name='location' to='location'>Location</Menu.Item>
-            <Menu.Item as='a'>RSVP</Menu.Item>
+          <Menu inverted fluid secondary size='massive' stackable text widths={4} >
+            <Menu.Item as={ Link } name='location' to='location' active> <Icon name='home'  /> Home </Menu.Item>
+            <Menu.Item as='a'> <Icon name='hotel'  /> Accommodation </Menu.Item>
+            <Menu.Item as={ Link } name='location' to='location'> <Icon name='map signs' /> Location </Menu.Item>
+            <Menu.Item as={ Link } name='rsvp' to='rsvp' > <Icon name='signup' /> RSVP </Menu.Item>
             {/* <Menu.Menu position='right'>
               <Menu.Item className='item'>
                 <Button as='a'>Log in</Button>

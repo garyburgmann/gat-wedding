@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Container,
   Header,
-  Segment,
+  Segment
   // Button
 } from 'semantic-ui-react';
 import MediaQuery from 'react-responsive';

@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
-import GoogleApiWrapper from './components/MapComponent'
+import ExampleForm from './pages/RSVP';
+import GoogleApiWrapper from './components/MapComponent';
+import Loading from './components/Loading';
 import AuthService from './services/AuthService';
+
 import fire from './environments/fire';
 
 
@@ -13,7 +16,7 @@ class App extends Component {
 
   state = {
     auth: '',
-    isLoggedIn: false
+    // isLoggedIn: 
   }
 
   _authService = new AuthService();
@@ -62,7 +65,7 @@ class App extends Component {
 
   render() {
     const isUser = this.state.isLoggedIn;
-    // console.log(this.state.isLoggedIn);
+    // console.log(isUser);
     if (isUser) {
       return (
         <div style={{height: '100vh'}}>
@@ -71,6 +74,7 @@ class App extends Component {
               <Switch>
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
                 <Route path="/location" component={() => (<GoogleApiWrapper />)} />
+                <Route path="/rsvp" component={() => (<ExampleForm />)} />
                 <Route path="/auth" component={() => (<AuthComponent  />)} />
                 <Route path="/" component={() => (<HomeComponent />)} />
               </Switch>
@@ -78,6 +82,8 @@ class App extends Component {
           </BrowserRouter>
         </div>
       );
+    } else if (isUser === undefined){
+      return <Loading />;
     } else {
       return <AuthComponent  />;
     }
