@@ -85,7 +85,7 @@ export class MapComponent extends Component {
               lat: -28.2562241,
               lng: 153.5780
             }}
-            zoom={17  }
+            zoom={16}
         >
         {/* <Listing places={this.state.places} /> */}
           {/* <Marker onClick={this.onMarkerClick}
