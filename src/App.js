@@ -65,7 +65,7 @@ class App extends Component {
     // console.log(this.state.isLoggedIn);
     if (isUser) {
       return (
-        <div>
+        <div style={{height: '100vh'}}>
           <BrowserRouter>
             <div>
               <Switch>

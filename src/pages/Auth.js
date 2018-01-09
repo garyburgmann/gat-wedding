@@ -56,7 +56,7 @@ export default class AuthComponent extends Component {
           <Grid.Column style={{ maxWidth: 450 }}>
             <Image src={xavier} />
             <Header as='h2' color='teal' textAlign='center'>
-              Please enter password to view our page
+              Please enter the password
             </Header>
             <Form size='large' onSubmit={this.handleSubmit}>
               <Segment stacked>
@@ -74,7 +74,8 @@ export default class AuthComponent extends Component {
               </Segment>
             </Form>
             <Message>
-              Password is on your invitation :)
+              Password is on your invitation :) <br />
+              (Hint: 'open seasame' won't work)
             </Message>
           </Grid.Column>
         </Grid>
