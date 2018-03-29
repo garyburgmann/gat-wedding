@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
 import ExampleForm from './pages/RSVP';
 import GoogleApiWrapper from './components/MapComponent';
 import Loading from './components/Loading';
-import AuthService from './services/AuthService';
+import Jedi from './components/jedi';
+// import AuthService from './services/AuthService';
 
-import fire from './environments/fire';
 
 
 class App extends Component {
@@ -16,56 +17,39 @@ class App extends Component {
 
   state = {
     auth: '',
-    // isLoggedIn: 
+    isLoggedIn: false
   }
 
-  _authService = new AuthService();
+  isLoggedIn = (data) => {
+    if (data.success) {
+      sessionStorage.setItem('isLoggedIn', true);
+      this.setState({
+        isLoggedIn: true,
+        token: data.token
+       });
+      // sessionStorage.setItem('isLoggedIn', true);
+    }
+  }
 
-
-  componentDidMount(){
-    // console.log(fire);
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log('User currently signed in');
-        this.setState({ isLoggedIn: true });
-      } else {
-        console.log('No user currently signed in');
-        this.setState({ isLoggedIn: false });
-      }
-      this.render();
+  logout = () => {
+    sessionStorage.setItem('isLoggedIn', false);
+    this.setState({
+      isLoggedIn: false
     });
-    
-    
-    // /* Create reference to messages in Firebase Database */
-    // localStorage.setItem('loggedIn', false);
-    // console.log(localStorage.getItem('loggedIn'));
-    // let authRef = fire.database().ref('auth');
-    // authRef.once('value', snapshot => {
-    //   /* Update React state when page loaded is added at Firebase Database */
-    //   let a = { text: snapshot.val(), id: snapshot.key };
-    //   // console.log('FIREBASE AUTH: ', a);
-    //   this.setState({ auth: a.text });
-    // })
+    console.log('STATE: ', this.state.isLoggedIn);
   }
 
-  componentWillUnmount() {
-    this._authService.fireLogout();
+  componentWillMount(){
+    // sessionStorage.setItem('isLoggedIn', false);
+    // console.log('SS: ', sessionStorage.getItem('isLoggedIn'));
+    // console.log('NINJA');
   }
-
-  // checkLogin(pw) {
-  //   let _authService = new AuthService();
-  //   _authService.fireLogin(pw);
-  //   let jedi = _authService.fireIsUser();
-  //   setTimeout(() => {
-  //     console.log(jedi);
-  //     this.setState({ isLoggedIn: jedi });
-  //   }, 100);
-  // }
-
 
   render() {
-    const isUser = this.state.isLoggedIn;
-    // console.log(isUser);
+    // const isUser = true;  // (this.state.isLoggedIn);
+    // const isUser = (this.state.isLoggedIn);
+    const isUser = (sessionStorage['isLoggedIn'] == 'true');
+    console.log(isUser);
     if (isUser) {
       return (
         <div style={{height: '100vh'}}>
@@ -75,7 +59,8 @@ class App extends Component {
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
                 <Route path="/location" component={() => (<GoogleApiWrapper />)} />
                 <Route path="/rsvp" component={() => (<ExampleForm />)} />
-                <Route path="/auth" component={() => (<AuthComponent  />)} />
+                <Route path="/auth" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
+                <Route path="/jedi" component={() => (<Jedi logout={this.logout} />)} />
                 <Route path="/" component={() => (<HomeComponent />)} />
               </Switch>
             </div>
@@ -85,7 +70,7 @@ class App extends Component {
     } else if (isUser === undefined){
       return <Loading />;
     } else {
-      return <AuthComponent  />;
+      return <AuthComponent isLoggedIn={this.isLoggedIn} />;
     }
   }
 }

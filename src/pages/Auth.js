@@ -1,46 +1,57 @@
 import React, {Component} from 'react'
-import { Button, 
-         Form, 
-         Grid, 
-         Header, 
-         Image, 
-         Message, 
-         Segment 
+import { Button,
+         Form,
+         Grid,
+         Header,
+         Image,
+         Message,
+         Segment
 } from 'semantic-ui-react'
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import xavier from '../assets/images/Xavier.jpg'; // Tell Webpack this JS file uses this image
-// import AuthService from '../services/AuthService';
-import fire from '../environments/fire';
-
+import {API_URL} from '../environments/dev';
 
 export default class AuthComponent extends Component {
 
-  state = { password: '', email: 'user@user.com', submittedPassword: '', submittedEmail: '' }
+  constructor(props){
+    super(props);
+  }
 
-  // _authService = new AuthService();
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  state = {
+    password: '',
+    submittedPassword: '',
+  }
+
+  apiUrl = API_URL;
+
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    console.log(name, value);
+  }
 
   handleSubmit = () => {
-    const { password, email } = this.state;
+    const { password } = this.state;
 
-    this.setState({ submittedPassword: password, submittedEmail: email });
-    // console.log("PW: ", this.state.password)
+    const data = {
+      username: 'user',
+      password: password
+    }
 
-    // this._authService.fireLogin(password);
-    // this.props.checkLogin(password);
-    fire.auth().signInWithEmailAndPassword(email, password)
+    const url = `${this.apiUrl}authenticate/`;
+
+    axios.post(url, data)
       .then((res) => {
-        // console.log(res);
+        console.log("DJANGO RES: ", res.data)
+        this.props.isLoggedIn(res.data);
       })
-      .catch(function(error) {
-        console.log(error.code);
-        console.log(error.message);
-      });
-    
+      .catch((err) => {
+        console.log("DJANGO ERR: ", err);
+      })
   }
 
   render() {
-    const { password, email, submittedPassword, submittedEmail } = this.state
+    const { password, submittedPassword } = this.state;
     return (
       <div className='login-form'>
         {/*
@@ -90,5 +101,3 @@ export default class AuthComponent extends Component {
     )
   }
 }
-
-

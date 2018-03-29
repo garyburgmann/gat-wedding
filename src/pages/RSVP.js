@@ -3,221 +3,164 @@ import { Button,
          Grid, 
          Header, 
          Message, 
-         Segment 
+         Segment,
+         Form
 } from 'semantic-ui-react'
-import {
-  Form,
-  StyledText,
-  StyledTextArea,
-  StyledRadio,
-  StyledRadioGroup,
-  StyledSelect,
-  StyledCheckbox
-} from 'react-form';
+// import {
+//   Form,
+//   StyledText,
+//   StyledTextArea,
+//   StyledRadio,
+//   StyledRadioGroup,
+//   StyledSelect,
+//   StyledCheckbox
+// } from 'react-form';
 import MediaQuery from 'react-responsive';
 import './rsvp.css';
 import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
 // import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
 import FixedMenu from '../components/Menu';
 
-const statusOptions = [
-  {
-    label: 'Single',
-    value: 'single'
-  },
-  {
-    label: 'In a Relationship',
-    value: 'relationship'
-  },
-  {
-    label: "It's Complicated",
-    value: 'complicated'
-  }
-];
 
 export default class ExampleForm extends Component {
 
-  constructor( props ) {
-    super( props );
-    this.state = {};
+  state = {
+    stage: 1,
+    firstName: '',
+    lastName: '',
+    email: '', 
   }
 
-  errorValidator = ( values ) => {
-    const validateFirstName = ( firstName ) => {
-      return !firstName ? 'First name is required.' : null;
-    };
-    const validateLastName = ( lastName ) => {
-      return !lastName ? 'Last name is required.' : null;
-    };
-    const validateGender = ( gender ) => {
-      return !gender ? 'Attendance is required.' : null;
-    };
-    const validateBio = ( bio ) => {
-      return !bio ? 'Bio is required.' : null;
-    };
-    const validateAuthorize = ( authorize ) => {
-      return !authorize ? 'Please check authorize.' : null;
-    };
-    const validateStatus = ( status ) => {
-      return !status ? 'Status is required.' : null;
-    };
-    return {
-      firstName: validateFirstName( values.firstName ),
-      lastName: validateLastName( values.lastName ),
-      gender: validateGender( values.gender ),
-      bio: validateBio( values.bio ),
-      authorize: validateAuthorize( values.authorize ),
-      status: validateStatus( values.status )
-    };
+  party = [
+    { key: 1, text: '1', value: 1 },
+    { key: 2, text: '2', value: 2 },
+  ]
+
+  handleAttendance = (e, { value }) => {
+    // console.log(value, this .state);
+
+    this.setState({ attendance: value });
+    setTimeout(() => {
+      console.log(value, this.state);
+    }, 10);
   }
 
-  warningValidator = ( values ) => {
-    const validateFirstName = ( firstName ) => {
-      return firstName && firstName.length < 2 ? 'First name must be longer than 2 characters.' : null;
-    };
-    const validateLastName = ( lastName ) => {
-      return lastName && lastName.length < 2 ? 'Last name must be longer than 2 characters.' : null;
-    };
-    const validateBio = ( bio ) => {
-      return bio && bio.replace(/s+/g, ' ').trim().split(' ').length < 5 ? 'Bio should have more than 5 words.' : null;
-    };
-    return {
-      firstName: validateFirstName( values.firstName ),
-      lastName: validateLastName( values.lastName ),
-      gender: null,
-      bio: validateBio( values.bio ),
-      authorize: null,
-      status: null
-    };
+  handleInput = (e, { name, value }) => {
+    console.log(name, value);
+    this.setState({ [name]: value });
+    setTimeout(() => {
+      console.log(this.state);
+    }, 1);
+  }
+  
+  handleSubmit = () => {
+    const { email } = this.state
+
+    // this.setState({ submittedName: name, submittedEmail: email })
   }
 
-  successValidator = ( values, errors ) => {
-    const validateFirstName = ( ) => {
-      return !errors.firstName ? 'Nice name!' : null;
-    };
-    const validateLastName = ( ) => {
-      return !errors.lastName ? 'Your last name is sick!' : null;
-    };
-    const validateGender = ( ) => {
-      return !errors.gender ? 'Thanks for entering your attendance.' : null;
-    };
-    const validateBio = ( ) => {
-      return !errors.bio ? 'Cool Bio!' : null;
-    };
-    const validateAuthorize = ( ) => {
-      return !errors.authorize ? 'You are now authorized.' : null;
-    };
-    const validateStatus = ( ) => {
-      return !errors.status ? 'Thanks for entering your status.' : null;
-    };
-    return {
-      firstName: validateFirstName( values.firstName ),
-      lastName: validateLastName( values.lastName ),
-      gender: validateGender( values.gender ),
-      bio: validateBio( values.bio ),
-      authorize: validateAuthorize( values.authorize ),
-      status: validateStatus( values.status )
-    };
+  up = () => {
+    this.setState({ stage: this.state.stage + 1});
+    setTimeout(() => {
+      console.log(this.state.stage);
+    }, 1);
   }
 
-  content = (
-    <div className='rsvp-form'>
-        {/*
-          Heads up! The styles below are necessary for the correct render of this example.
-          You can do same with CSS, the main idea is that all the elements up to the `Grid`
-          below must have a height of 100%.
-        */}
-        {/* <style>{`
-          body > div,
-          body > div > div,
-          body > div > div > div.rsvp-form {
-            height: 100%;
-          }
-        `}</style> */}
-        <Grid
-          textAlign='center'
-          style={{ height: '100%' }}
-          verticalAlign='middle'
-        >
-          <Grid.Column style={{ maxWidth: 450 }}>
-            {/* <Image src={xavier} /> */}
-            <Header as='h2' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
-              RSVP Details Form
-            </Header>
-            <Header as='h4' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
-              Please fill a copy of the form for <u><em>each</em></u> person attending
-            </Header>
-            <Form
-              validateError={this.errorValidator}
-              validateWarning={this.warningValidator}
-              validateSuccess={this.successValidator}
-              onSubmit={submittedValues => this.setState( { submittedValues } )}>
-              { formApi => (
-                <form onSubmit={formApi.submitForm} id="form2">
-              <Segment stacked>
-                <span><label htmlFor="firstName">First name</label>
-                <StyledText field="firstName" id="firstName" /></span>
-                <label htmlFor="lastName">Last name</label>
-                <StyledText field="lastName" id="lastName" />
-                <label>Will you be attending?</label>
-                <StyledRadioGroup field="gender">
-                  { group => (
-                    <div>
-                      <StyledRadio group={group} value="yes" id="yes" label="Yes" className="mr-3 d-inline-block" />
-                      <StyledRadio group={group} value="no" id="no" label="No" className="d-inline-block" />
-                    </div>
-                  )}
-                </StyledRadioGroup>
-                {/* <label htmlFor="bio">Bio</label>
-                <StyledTextArea field="bio" id="bio" />
-                <StyledCheckbox field="authorize" id="authorize" label="Authorize" className="d-inline-block" />
-                <label htmlFor="status" className="d-block">Relationship status</label>
-                <StyledSelect field="status" id="status" options={statusOptions} /> */}
+  down = () => {
+    this.setState({ stage: this.state.stage - 1});
+    setTimeout(() => {
+      console.log(this.state.stage);
+    }, 1);
+  }
 
-                <Button color='teal' fluid size='large' type='submit' value='Submit' >Submit</Button>
-              </Segment>
-              </form>
-              )}
-            </Form>
-            {/* <Message>
-              Password is on your invitation :) <br />
-              (Hint: 'open seasame' won't work)
-            </Message> */}
-          </Grid.Column>
-        </Grid>
-      </div>
-  );
+
+  // content = (
+    
+  // );
 
   render() {
+    const { attendance, firstName, firstName2, lastName, lastName2, email, party } = this.state
+    
     return (
       <div>
-        <MediaQuery query="(min-device-width: 850px)">
-          <Segment
-                inverted
-                textAlign='center'
-                style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}}
-                vertical
-                raised
-          >
+          {/* <MediaQuery query="(min-device-width: 850px)"> 
+            {(matches) => {
+              if (matches) {
+                this.setState({segment: {minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}});
+                console.log(this.state);
+                return <span></span>
+              } else {
+                this.setState({segment: {minHeight: '100vh', padding: '1em 0em', background: `teal`, backgroundSize: 'cover'}});
+                console.log(this.state);
+                return <span></span>
+              }
+            }}
+          </MediaQuery> */}
+        <Segment
+            inverted
+            textAlign='center'
+            style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}}
+            vertical
+            raised
+        > 
           <FixedMenu  />
-          {this.content}
-          </Segment>
-        </MediaQuery>
+          <div className='rsvp-form'>
+            <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+              <Grid.Column style={{ maxWidth: 450 }}>
+                <Header as='h2' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
+                  RSVP Details Form
+                </Header>
+                <Header as='h4' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
+                  {/* Please fill a copy of this form for <u><em>each</em></u> person attending  */}
+                  <Button onClick={this.up}>Up</Button> <Button onClick={this.down}>Down</Button>
+                </Header>
+                <Segment>
+                  <Form onSubmit={this.handleSubmit} size="big">
+                      {this.state.stage == 1 ? 
+                        <Segment stacked>
+                          <Form.Input fluid label='Email Address' placeholder='Your Contact Email Address' name='email' value={email} onChange={this.handleInput} />
+                          <Form.Select fluid label='Total In Your Party' options={this.party} placeholder='Total In Your Party' name='party' value={party} onChange={this.handleInput}/>
+                        </Segment>
+                      : <span></span>  }  
 
-        <MediaQuery query="(max-device-width: 849px)">
-          <Segment
-                inverted
-                textAlign='center'
-                style={{minHeight: '100vh', padding: '1em 0em', background: `teal`, backgroundSize: 'cover'}}
-                vertical
-                raised
-          >
-          <FixedMenu  />
-          {this.content}
-          </Segment>
-        </MediaQuery>
+                      {this.state.stage == 2 ? 
+                        <Segment stacked>
+                          <Form.Input fluid label='First name' placeholder='First name' name='firstName' value={firstName} onChange={this.handleInput} />
+                          <Form.Input fluid label='Last name' placeholder='Last name' name='lastName' value={lastName} onChange={this.handleInput} />
+                          {this.state.party == 2 ?
+                            <div>
+                              <Form.Input fluid label='First name' placeholder='First name' name='firstName2' value={firstName2} onChange={this.handleInput} />
+                              <Form.Input fluid label='Last name' placeholder='Last name' name='lastName2' value={lastName2} onChange={this.handleInput} />
+                            </div>
+                          : <span></span>
+                          }  
+                        </Segment>
+                      : <span></span>  }      
+                    
+                    <Form.Group grouped inline>
+                      <label>Can you attend?</label>
+                      <Form.Radio label='Yes' value='yes' checked={attendance === 'yes'} onChange={this.handleAttendance} />
+                      <Form.Radio label='No' value='no' checked={attendance === 'no'} onChange={this.handleAttendance} />
+                    </Form.Group>
+                    <Form.Group grouped>
+                      <label>Do you have any dietery requirements?</label>
+                      <Form.Checkbox label='I love seafood!' />
+                      <Form.Checkbox label='I do not eat fish or seafood' />
+                      <Form.Checkbox label='I am vegetarian' />
+                      <Form.Checkbox label='I cannot have lactose' />
+                      <Form.Checkbox label='I cannot have gluten' />
+                    </Form.Group>
+                    <Form.TextArea label='Any other comments or information?' placeholder='Please enlighten us...' />
+                    <Form.Button>Submit</Form.Button>
+                  </Form>
+                </Segment>
+              </Grid.Column>
+            </Grid>
+          </div>
+        </Segment>
       </div>
-    );}
+    );
+  }
 }
   // <Form
   //   validateError={this.errorValidator}
