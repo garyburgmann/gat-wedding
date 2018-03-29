@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api.gatwedding.com/api/",
   "dependencies": {
     "axios": "^0.17.1",
     "google-maps-react": "^1.1.2",
