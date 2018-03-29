@@ -10,7 +10,7 @@ import { Button,
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import xavier from '../assets/images/Xavier.jpg'; // Tell Webpack this JS file uses this image
-import {API_URL} from '../environments/dev';
+import {API_URL} from '../settings';
 
 export default class AuthComponent extends Component {
 

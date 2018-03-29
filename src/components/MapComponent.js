@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import config from '../environments/gmaps';
+// import config from '../environments/gmaps';
 import {GMAPS_KEY} from '../settings';
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
