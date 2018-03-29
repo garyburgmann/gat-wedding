@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import config from '../environments/gmaps';
+import {GMAPS_KEY} from '../settings';
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import FixedMenu from './Menu';
@@ -13,12 +14,12 @@ export class MapComponent extends Component {
       activeMarker: {},
       selectedPlace: {},
     }
-    
+
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
   }
-  
+
   onMarkerClick(props, marker, e) {
     // console.log(this.state.showingInfoWindow);
     this.setState({
@@ -52,14 +53,14 @@ export class MapComponent extends Component {
   //                                at 4pm. The is a little enclosed section of
   //                                grass by the sea. There is some parking
   //                                spaces nearby, but plan ahead as you may need
-  //                                to park in a street nearby and walk to the 
+  //                                to park in a street nearby and walk to the
   //                                park.`}
   //                       position={{lat: -28.2569834, lng: 153.580499}}
   //                       onClick={this.onMarkerClick} /> ),
   //   babalou: ( <Marker name={'babalou'}
   //                      title={'Gat Reception: Babalou'}
   //                      detail={`The reception will kick off around 6pm
-  //                               upstairs at the Kingscliff Hotel in the 
+  //                               upstairs at the Kingscliff Hotel in the
   //                               'Babalou' function room.`}
   //                      position={{lat: -28.2554067, lng: 153.5760453}}
   //                      onClick={this.onMarkerClick} /> )
@@ -77,7 +78,7 @@ export class MapComponent extends Component {
     // console.log(dest);
     return (
       <div>
-        
+
         <Map google={this.props.google}
             onReady={this.fetchPlaces}
             onClick={this.onMapClicked}
@@ -105,14 +106,14 @@ export class MapComponent extends Component {
                                  at 4pm. The is a little enclosed section of
                                  grass by the sea. There is some parking
                                  spaces nearby, but plan ahead as you may need
-                                 to park in a street nearby and walk to the 
+                                 to park in a street nearby and walk to the
                                  park.`}
                         position={{lat: -28.2569834, lng: 153.580499}}
                         onClick={this.onMarkerClick} />
           <Marker name={'babalou'}
                        title={'Gat Reception: Babalou'}
                        detail={`The reception will kick off around 6pm
-                                upstairs at the Kingscliff Hotel in the 
+                                upstairs at the Kingscliff Hotel in the
                                 'Babalou' function room.`}
                        position={{lat: -28.2554067, lng: 153.5760453}}
                        onClick={this.onMarkerClick} />
@@ -134,5 +135,5 @@ export class MapComponent extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: config.apiKey
+  apiKey: GMAPS_KEY
 })(MapComponent)
