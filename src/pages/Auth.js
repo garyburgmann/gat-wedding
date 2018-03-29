@@ -38,7 +38,7 @@ export default class AuthComponent extends Component {
       password: password
     }
 
-    const url = `${this.apiUrl}authenticate/`;
+    const url = `${this.apiUrl}auth/login/`;
 
     axios.post(url, data)
       .then((res) => {
