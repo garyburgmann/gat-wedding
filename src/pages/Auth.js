@@ -93,7 +93,7 @@ export default class AuthComponent extends Component {
             </Form>
             <Message>
               Password is on your invitation :) <br />
-              (Hint: 'open sesame' won't work)
+              (Hint: 'open sesame' won't work!)
             </Message>
           </Grid.Column>
         </Grid>
