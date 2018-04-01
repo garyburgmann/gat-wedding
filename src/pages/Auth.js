@@ -42,11 +42,11 @@ export default class AuthComponent extends Component {
 
     axios.post(url, data)
       .then((res) => {
-        console.log("DJANGO RES: ", res.data)
+        console.log("LOGIN RES: ", res.data)
         this.props.isLoggedIn(res.data);
       })
       .catch((err) => {
-        console.log("DJANGO ERR: ", err);
+        console.log("LOGIN ERR: ", err);
       })
   }
 
