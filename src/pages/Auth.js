@@ -14,10 +14,6 @@ import {API_URL} from '../settings';
 
 export default class AuthComponent extends Component {
 
-  constructor(props){
-    super(props);
-  }
-
   state = {
     password: '',
     submittedPassword: '',
@@ -42,11 +38,11 @@ export default class AuthComponent extends Component {
 
     axios.post(url, data)
       .then((res) => {
-        console.log("DJANGO RES: ", res.data)
+        console.log("AUTH RES: ", res.data)
         this.props.isLoggedIn(res.data);
       })
       .catch((err) => {
-        console.log("DJANGO ERR: ", err);
+        console.log("AUTH ERR: ", err);
       })
   }
 

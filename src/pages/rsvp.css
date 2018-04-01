@@ -313,3 +313,7 @@
 .react-form-select-success select{
   /* // Style form select success here */
 }
+
+input:hover {
+	outline: 'none',
+}

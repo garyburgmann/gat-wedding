@@ -4,7 +4,9 @@ import { Button,
          Header, 
          Message, 
          Segment,
-         Form
+         Form,
+         Image,
+         Input
 } from 'semantic-ui-react'
 // import {
 //   Form,
@@ -19,15 +21,13 @@ import MediaQuery from 'react-responsive';
 import './rsvp.css';
 import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
 // import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
+import seahorses from '../assets/images/seahorses.png'
 import FixedMenu from '../components/Menu';
 
 
 export default class ExampleForm extends Component {
 
   state = {
-    stage: 1,
-    firstName: '',
-    lastName: '',
     email: '', 
   }
 
@@ -59,21 +59,6 @@ export default class ExampleForm extends Component {
     // this.setState({ submittedName: name, submittedEmail: email })
   }
 
-  up = () => {
-    this.setState({ stage: this.state.stage + 1});
-    setTimeout(() => {
-      console.log(this.state.stage);
-    }, 1);
-  }
-
-  down = () => {
-    this.setState({ stage: this.state.stage - 1});
-    setTimeout(() => {
-      console.log(this.state.stage);
-    }, 1);
-  }
-
-
   // content = (
     
   // );
@@ -99,45 +84,30 @@ export default class ExampleForm extends Component {
         <Segment
             inverted
             textAlign='center'
-            style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}}
+            style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover', }}
             vertical
             raised
         > 
           <FixedMenu  />
           <div className='rsvp-form'>
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-              <Grid.Column style={{ maxWidth: 450 }}>
-                <Header as='h2' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
-                  RSVP Details Form
-                </Header>
-                <Header as='h4' inverted textAlign='center' style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
-                  {/* Please fill a copy of this form for <u><em>each</em></u> person attending  */}
-                  <Button onClick={this.up}>Up</Button> <Button onClick={this.down}>Down</Button>
-                </Header>
-                <Segment>
-                  <Form onSubmit={this.handleSubmit} size="big">
-                      {this.state.stage == 1 ? 
-                        <Segment stacked>
-                          <Form.Input fluid label='Email Address' placeholder='Your Contact Email Address' name='email' value={email} onChange={this.handleInput} />
-                          <Form.Select fluid label='Total In Your Party' options={this.party} placeholder='Total In Your Party' name='party' value={party} onChange={this.handleInput}/>
-                        </Segment>
-                      : <span></span>  }  
+              <Grid.Column style={{ maxWidth: 500 }}>
 
-                      {this.state.stage == 2 ? 
-                        <Segment stacked>
-                          <Form.Input fluid label='First name' placeholder='First name' name='firstName' value={firstName} onChange={this.handleInput} />
-                          <Form.Input fluid label='Last name' placeholder='Last name' name='lastName' value={lastName} onChange={this.handleInput} />
-                          {this.state.party == 2 ?
-                            <div>
-                              <Form.Input fluid label='First name' placeholder='First name' name='firstName2' value={firstName2} onChange={this.handleInput} />
-                              <Form.Input fluid label='Last name' placeholder='Last name' name='lastName2' value={lastName2} onChange={this.handleInput} />
-                            </div>
-                          : <span></span>
-                          }  
-                        </Segment>
-                      : <span></span>  }      
+                <Segment style={{minHeight: '50vh', padding: '1em 0em', background: `#F7F7F7`}} >
+                  <Form onSubmit={this.handleSubmit} size="big">
                     
-                    <Form.Group grouped inline>
+                    <Header as='h1' textAlign='center' style={{fontFamily: `'Allura', cursive`, fontSize: '2em', padding: '1em 0em'}}>
+                      Please reply by September 03, 2018
+                    </Header>
+                    
+                    
+                    {/* <Segment stacked>
+                      <Form.Input fluid label='Email Address' placeholder='Your Contact Email Address' name='email' value={email} onChange={this.handleInput} />
+                      <Form.Select fluid label='Total In Your Party' options={this.party} placeholder='Total In Your Party' name='party' value={party} onChange={this.handleInput}/>
+                    </Segment>  */}
+                    <Form.Input label='Name(s)' placeholder='Your names' name='names' transparent 
+                                style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0', textAlign: 'center'}} />
+                    <Form.Group inline>
                       <label>Can you attend?</label>
                       <Form.Radio label='Yes' value='yes' checked={attendance === 'yes'} onChange={this.handleAttendance} />
                       <Form.Radio label='No' value='no' checked={attendance === 'no'} onChange={this.handleAttendance} />
@@ -147,11 +117,18 @@ export default class ExampleForm extends Component {
                       <Form.Checkbox label='I love seafood!' />
                       <Form.Checkbox label='I do not eat fish or seafood' />
                       <Form.Checkbox label='I am vegetarian' />
-                      <Form.Checkbox label='I cannot have lactose' />
-                      <Form.Checkbox label='I cannot have gluten' />
                     </Form.Group>
-                    <Form.TextArea label='Any other comments or information?' placeholder='Please enlighten us...' />
+                    {/* <Form.TextArea label='Any other comments or information?' placeholder='Please enlighten us...' /> */}
                     <Form.Button>Submit</Form.Button>
+                    <Image src={seahorses} size='small' centered style={{padding: '1em 0em'}}/>
+                    {/* <Segment
+                      inverted
+                      textAlign='center'
+                      style={{minHeight: '10vh', padding: '1em 0em', background: `#000 url('${seahorses}') center center `}}
+                      vertical
+                      raised
+                    >
+                    </Segment> */}
                   </Form>
                 </Segment>
               </Grid.Column>
@@ -192,3 +169,4 @@ export default class ExampleForm extends Component {
   //   )}
   // </Form>
  
+  

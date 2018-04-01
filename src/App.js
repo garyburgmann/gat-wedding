@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
