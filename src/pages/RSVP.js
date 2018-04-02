@@ -29,6 +29,7 @@ export default class ExampleForm extends Component {
 
   state = {
     email: '', 
+    names: ''
   }
 
   party = [
@@ -59,76 +60,96 @@ export default class ExampleForm extends Component {
     // this.setState({ submittedName: name, submittedEmail: email })
   }
 
+  handleScreen = (val) => {
+    console.log('HANDLE SCREEN: ', val);
+    this.setState({ mobile: val });
+  }
+
   // content = (
     
   // );
 
   render() {
-    const { attendance, firstName, firstName2, lastName, lastName2, email, party } = this.state
-    
+    const { attendance, email } = this.state
+    let jedi = false;
     return (
       <div>
-          {/* <MediaQuery query="(min-device-width: 850px)"> 
+          <MediaQuery query="(min-device-width: 850px)"> 
             {(matches) => {
               if (matches) {
-                this.setState({segment: {minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}});
-                console.log(this.state);
-                return <span></span>
+                jedi = true;
+                if (jedi != this.state.mobile) {
+                  this.handleScreen(jedi);
+                }
+                
+                console.log('JEDI: ', jedi);
+                return null;
               } else {
-                this.setState({segment: {minHeight: '100vh', padding: '1em 0em', background: `teal`, backgroundSize: 'cover'}});
-                console.log(this.state);
-                return <span></span>
+                jedi = false;
+                if (jedi != this.state.mobile) {
+                  this.handleScreen(jedi);
+                }
+                console.log('JEDI: ', jedi);
+                return null;
               }
             }}
-          </MediaQuery> */}
+          </MediaQuery>
         <Segment
             inverted
-            textAlign='center'
             style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover', }}
             vertical
             raised
         > 
           <FixedMenu  />
           <div className='rsvp-form'>
-            <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-              <Grid.Column style={{ maxWidth: 500 }}>
+            <Grid style={{ height: '100%' }} centered>
+              <Grid.Column style={{ maxWidth: this.state.mobile ? 700 : 500 }}>
 
                 <Segment style={{minHeight: '50vh', padding: '1em 0em', background: `#F7F7F7`}} >
                   <Form onSubmit={this.handleSubmit} size="big">
                     
-                    <Header as='h1' textAlign='center' style={{fontFamily: `'Allura', cursive`, fontSize: '2em', padding: '1em 0em'}}>
+                    <Header as='h1' textAlign='center' size='huge' style={{fontFamily: `'Allura', cursive`, padding: '1em 0em'}}>
                       Please reply by September 03, 2018
                     </Header>
                     
+                  
+                    <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
+                      <Form.Input placeholder='Your names' name='names' transparent onChange={this.handleInput}
+                                  style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0'}} />
+                    </div>
+
+                    <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
+                      <Form.Input placeholder='Your email' name='email' transparent type='email' onChange={this.handleInput}
+                                  style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0'}} />
+                    </div>
                     
-                    {/* <Segment stacked>
-                      <Form.Input fluid label='Email Address' placeholder='Your Contact Email Address' name='email' value={email} onChange={this.handleInput} />
-                      <Form.Select fluid label='Total In Your Party' options={this.party} placeholder='Total In Your Party' name='party' value={party} onChange={this.handleInput}/>
-                    </Segment>  */}
-                    <Form.Input label='Name(s)' placeholder='Your names' name='names' transparent 
-                                style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0', textAlign: 'center'}} />
-                    <Form.Group inline>
-                      <label>Can you attend?</label>
-                      <Form.Radio label='Yes' value='yes' checked={attendance === 'yes'} onChange={this.handleAttendance} />
-                      <Form.Radio label='No' value='no' checked={attendance === 'no'} onChange={this.handleAttendance} />
-                    </Form.Group>
-                    <Form.Group grouped>
-                      <label>Do you have any dietery requirements?</label>
-                      <Form.Checkbox label='I love seafood!' />
-                      <Form.Checkbox label='I do not eat fish or seafood' />
-                      <Form.Checkbox label='I am vegetarian' />
-                    </Form.Group>
+                    <div style={{ marginBottom: '2em', fontFamily: `'Libre Baskerville', serif` }}>
+                      <Form.Group grouped style={{marginLeft: '10%'}}>
+                        {/* <label>Can you attend?</label> */}
+                        <Form.Checkbox type='radio' label='Accept' value='yes' checked={attendance === 'yes'} onChange={this.handleAttendance} />
+                        <Form.Checkbox type='radio' label='Decline' value='no' checked={attendance === 'no'} onChange={this.handleAttendance} />
+                      </Form.Group>
+                    </div>
+                    
+                    <div style={{marginLeft: '10%', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
+                      <Form.Group grouped>
+                        <Form.Checkbox label='I love seafood!' />
+                        <Form.Checkbox label="I don't eat fish or seafood" />
+                        <Form.Checkbox label="I'm vegetarian" />
+                      </Form.Group>
+                    </div>
+
+                    <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
+                      <Form.Input placeholder='Other dietary requirements?' name='dietary' transparent 
+                                  style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0'}} />
+                    </div>
+
+                    <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
                     {/* <Form.TextArea label='Any other comments or information?' placeholder='Please enlighten us...' /> */}
-                    <Form.Button>Submit</Form.Button>
-                    <Image src={seahorses} size='small' centered style={{padding: '1em 0em'}}/>
-                    {/* <Segment
-                      inverted
-                      textAlign='center'
-                      style={{minHeight: '10vh', padding: '1em 0em', background: `#000 url('${seahorses}') center center `}}
-                      vertical
-                      raised
-                    >
-                    </Segment> */}
+                      <Form.Button>Submit</Form.Button>
+                      <Image src={seahorses} size='small' centered style={{padding: '1em 0em'}}/>
+                    </div>
+                   
                   </Form>
                 </Segment>
               </Grid.Column>
