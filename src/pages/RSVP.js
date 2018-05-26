@@ -208,7 +208,10 @@ export default class ExampleForm extends Component {
           onConfirm={this.handleConfirm}
           content='Are you sure that you wish to modify an existing RSVP?'
           header='Existing RSVP Found for Email'
+          cancelButton='No Thanks'
+          confirmButton="Yes Please"
           size="small"
+          style={{textAlign: 'center'}}
         />
         <MediaQuery query="(min-device-width: 850px)">
           {(matches) => {
