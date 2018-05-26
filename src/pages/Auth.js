@@ -47,7 +47,7 @@ export default class AuthComponent extends Component {
   }
 
   render() {
-    const { password, submittedPassword } = this.state;
+    // const { password, submittedPassword } = this.state;
     return (
       <div className='login-form'>
         {/*

@@ -6,7 +6,7 @@ import AuthComponent from './pages/Auth';
 import ExampleForm from './pages/RSVP';
 import GoogleApiWrapper from './components/MapComponent';
 import Loading from './components/Loading';
-import Jedi from './components/jedi';
+import Jedi from './components/Jedi';
 // import AuthService from './services/AuthService';
 
 
@@ -47,7 +47,7 @@ class App extends Component {
   render() {
     // const isUser = true;  // (this.state.isLoggedIn);
     // const isUser = (this.state.isLoggedIn);
-    const isUser = (sessionStorage['isLoggedIn'] == 'true');
+    const isUser = (sessionStorage['isLoggedIn'] === 'true');
     console.log(isUser);
     if (isUser) {
       return (

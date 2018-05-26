@@ -12,8 +12,8 @@ import FixedMenu from './Menu';
 import TimerComponent from './Timer';
 import desktop from '../assets/images/gat-desktop.jpg'; // Tell Webpack this JS file uses this image
 import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
-// import fire from '../fire';
-
+// import jedi from '../assets/images/gat-new.jpg'; // Tell Webpack this JS file uses this image
+// import walk from '../assets/images/gat-walk.jpg'; // Tell Webpack this JS file uses this image
 
 export default class Jumbotron extends Component {
 
@@ -74,9 +74,8 @@ export default class Jumbotron extends Component {
           </Segment>
         </MediaQuery>
       </div>
-      
+
     );
   }
-  
-}
 
+}

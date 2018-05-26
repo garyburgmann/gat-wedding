@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Countdown from 'react-count-down'
-import './timer.css';
+import './Timer.css';
 // import {
 //   Button,
 //   Container,
@@ -15,9 +15,9 @@ import './timer.css';
 //   Visibility,
 // } from 'semantic-ui-react';
 // import Countdown from 'react-countdown-date';
- 
+
 export default class TimerComponent extends Component {
-  
+
   // state = {
   //   date: new Date('11/03/2018 04:00 PM')
   // }
@@ -47,7 +47,7 @@ export default class TimerComponent extends Component {
   //   }, 1000);
   //   const wedding = new Date('11/03/2018 04:00 PM');
   //   const show = this.getTimeRemaining(wedding);
-    
+
   //   return (
   //     <div>
   //       { this.state.getTimer ? `${show.days}days ${show.hours}hrs ${show.minutes}mins ${show.seconds}secs` : null }
