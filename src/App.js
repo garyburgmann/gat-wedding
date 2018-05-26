@@ -7,6 +7,9 @@ import ExampleForm from './pages/RSVP';
 import GoogleApiWrapper from './components/MapComponent';
 import Loading from './components/Loading';
 import Jedi from './components/Jedi';
+import FixedMenu from './components/Menu';
+import GiftsComponent from './pages/Gifts';
+import AccommodationComponent from './pages/Accommodation';
 // import AuthService from './services/AuthService';
 
 
@@ -51,15 +54,19 @@ class App extends Component {
     console.log(isUser);
     if (isUser) {
       return (
-        <div style={{height: '100vh'}}>
+        <div style={{minHeight: '100vh'}}>
+
           <BrowserRouter>
-            <div>
+            <div style={{minHeight: '100vh'}}>
+              <FixedMenu  />
               <Switch>
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
                 <Route path="/location" component={() => (<GoogleApiWrapper />)} />
                 <Route path="/rsvp" component={() => (<ExampleForm />)} />
                 <Route path="/auth" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
                 <Route path="/jedi" component={() => (<Jedi logout={this.logout} />)} />
+                <Route path="/gifts" component={() => (<GiftsComponent />)} />
+                <Route path="/accommodation" component={() => (<AccommodationComponent />)} />
                 <Route path="/" component={() => (<HomeComponent />)} />
               </Switch>
             </div>

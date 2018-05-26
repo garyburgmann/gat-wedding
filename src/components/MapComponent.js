@@ -3,8 +3,12 @@ import React, {Component} from 'react';
 import {GMAPS_KEY} from '../settings';
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import FixedMenu from './Menu';
+// import FixedMenu from './Menu';
 
+const style = {
+  width: '100%',
+  height: '90%'
+}
 
 export class MapComponent extends Component {
   constructor(props) {
@@ -77,7 +81,7 @@ export class MapComponent extends Component {
     // const dest = this.renderDestinations();
     // console.log(dest);
     return (
-      <div>
+      <div >
 
         <Map google={this.props.google}
             onReady={this.fetchPlaces}
@@ -87,8 +91,9 @@ export class MapComponent extends Component {
               lng: 153.5780
             }}
             zoom={16}
+            style={style} 
         >
-        <FixedMenu  />
+        
         {/* <Listing places={this.state.places} /> */}
           {/* <Marker onClick={this.onMarkerClick}
                   name={'Gat Ceremony Location'} />

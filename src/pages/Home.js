@@ -27,8 +27,8 @@ export default class HomeComponent extends Component {
     // const { visible } = this.state
 
     return (
-      <div style={{minHeight: '100vh'}}>
-       <Jumbotron />
+      <div style={{height: '100% !important'}}>
+        <Jumbotron style={{height: '100% !important'}}/>
       </div>
     )
   }

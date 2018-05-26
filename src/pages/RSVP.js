@@ -25,7 +25,7 @@ import './RSVP.css';
 import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
 // import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
 import seahorses from '../assets/images/seahorses.png'
-import FixedMenu from '../components/Menu';
+// import FixedMenu from '../components/Menu';
 import { Redirect } from 'react-router-dom';
 import EmailService from '../services/EmailService';
 import RSVPService from '../services/RSVPService';
@@ -236,13 +236,13 @@ export default class ExampleForm extends Component {
         </MediaQuery>
         <Segment
             inverted
-            style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover', }}
+            style={{height: '95vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover', }}
             vertical
             raised
         >
-          <FixedMenu  />
+          
           <div className='rsvp-form'>
-            <Grid style={{ height: '100%' }} centered>
+            <Grid style={{ height: '95vh' }} centered>
               <Grid.Column style={{ maxWidth: this.state.mobile ? 700 : 500 }}>
 
                 <Segment style={{minHeight: '50vh', padding: '1em 0em', background: `#F7F7F7`}} >

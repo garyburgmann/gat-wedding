@@ -3,8 +3,9 @@ body, html {
   padding: 0;
   font-family: sans-serif;
   /* font-family: 'Bellefair', serif; */
-  height: 100vh;
-  min-height: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  background-color: teal;
 }
 
 .test {

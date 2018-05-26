@@ -8,7 +8,7 @@ import {
 import MediaQuery from 'react-responsive';
 
 // import _ from 'lodash';
-import FixedMenu from './Menu';
+// import FixedMenu from './Menu';
 import TimerComponent from './Timer';
 import desktop from '../assets/images/gat-desktop.jpg'; // Tell Webpack this JS file uses this image
 import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
@@ -24,7 +24,7 @@ export default class Jumbotron extends Component {
   content = (
     <Container style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>
       {/* <p className="test"> Hello </p> */}
-      <FixedMenu  />
+      
       <Header
         as='h1'
         content='Katrina & Gary'
@@ -49,12 +49,12 @@ export default class Jumbotron extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{height: '95vh !important'}}>
         <MediaQuery query="(min-device-width: 850px)">
           <Segment
                 inverted
                 textAlign='center'
-                style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover'}}
+                style={{height: '90vh', background: `#000 url('${desktop}') no-repeat center center fixed`, backgroundSize: 'cover'}}
                 vertical
                 raised
           >
@@ -66,7 +66,7 @@ export default class Jumbotron extends Component {
           <Segment
                 inverted
                 textAlign='center'
-                style={{minHeight: '100vh', padding: '1em 0em', background: `#000 url('${mobile}') no-repeat center center `, backgroundSize: 'cover'}}
+                style={{height: '100%', padding: '1em 0em', background: `#000 url('${mobile}') no-repeat center center fixed`, backgroundSize: 'cover'}}
                 vertical
                 raised
           >

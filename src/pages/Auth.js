@@ -69,7 +69,7 @@ export default class AuthComponent extends Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Image src={xavier} />
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as='h2' textAlign='center' style={{color: 'white'}}>
               Please enter the password
             </Header>
             <Form size='large' onSubmit={this.handleSubmit}>
