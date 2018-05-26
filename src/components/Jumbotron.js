@@ -66,7 +66,7 @@ export default class Jumbotron extends Component {
           <Segment
                 inverted
                 textAlign='center'
-                style={{height: '100%', padding: '1em 0em', background: `#000 url('${mobile}') no-repeat center center fixed`, backgroundSize: 'cover'}}
+                style={{ minWidth: '100%', padding: '1em 0em', background: `#000 url('${mobile}') no-repeat center center fixed`, backgroundSize: 'cover'}}
                 vertical
                 raised
           >
