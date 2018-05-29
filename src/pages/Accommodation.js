@@ -15,7 +15,7 @@ export default class AccommodationComponent extends Component {
         <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Accommodation</Header>
         <p>Some places to stay nearby the reception:
           <br />
-          <table align='center'>
+          <table align='center' cellspacing="10">
             <tr>
               <td> Peppers </td>
               <td></td>
@@ -35,7 +35,7 @@ export default class AccommodationComponent extends Component {
           <br />
           Booking Websites:
           <br />
-          <table align='center'>
+          <table align='center' cellspacing="10">
             <tr>
               <td> Airbnb </td>
               <td></td>
