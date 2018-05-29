@@ -14,7 +14,7 @@ export default class GiftsComponent extends Component {
         <p>The most important thing is to have you with us for our special day. No
           gifts are needed or expected. However, we have been asked what we need
           or would like, and if you do wish to give us something, a little cash to
-          spend on our honeymon would be very much appreciated</p>
+          spend on our honeymoon would be very much appreciated.</p>
         <p>Love Kat and Gary</p>
         <Image src={seahorses} size='small' centered style={{padding: '1em 0em'}}/>
       </Container>
