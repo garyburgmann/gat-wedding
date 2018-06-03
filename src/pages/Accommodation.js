@@ -9,46 +9,77 @@ import {
 import seahorses from '../assets/images/seahorses.png'
 
 export default class AccommodationComponent extends Component {
+
+  places = [
+    {
+      name: 'Blue Waters Motel',
+      url: 'https://bluewatersmotel.com.au/'
+    },
+    {
+      name: 'Sunrise Cove Holiday Apartments',
+      url: 'http://www.sunrisecove.com.au/'
+    },
+    {
+      name: 'Kingscliff Paradiso Resort',
+      url: 'http://www.paradisoresort.com.au/'
+    },
+    {
+      name: 'Tweed Coast Holiday Parks',
+      url: 'http://www.tchp.com.au/'
+    },
+    {
+      name: 'Peppers',
+      url: 'https://www.peppers.com.au/salt/'
+    },
+    {
+      name: 'Mantra',
+      url: 'https://www.mantra.com.au/new-south-wales/tweed-coast/kingscliff/accommodation/resorts/mantra-on-salt-beach/'
+    },
+  ]
+  getPlaces = () => {
+    return this.places.map((p, i) => {
+      return (
+        <tr key={i}>
+          <td> {p.name} </td>
+          <td></td>
+          <td> <Button href={p.url} style={{color: 'white'}} color='teal' >Take me there</Button> </td>
+        </tr>
+      )
+    });
+  }
+
   render() {
+    const places = this.getPlaces();
     return (
       <Container text style={{fontFamily: `'Allura', cursive`, padding: '1em 1em', fontSize: '2em', background: `#F7F7F7`}} textAlign='center'>
         <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Accommodation</Header>
-        <p>Some places to stay nearby the reception:
-          <br />
-          <table align='center' cellspacing="10">
-            <tr>
-              <td> Peppers </td>
-              <td></td>
-              <td> <Button href='https://www.peppers.com.au/salt/' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
-            </tr>
-            <tr>
-              <td> Mantra </td>
-              <td></td>
-              <td> <Button href='https://www.mantra.com.au/new-south-wales/tweed-coast/kingscliff/accommodation/resorts/mantra-on-salt-beach/' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
-            </tr>
-            <tr>
-              <td> Blue Waters Motel </td>
-              <td></td>
-              <td> <Button href='http://bluewatersmotel.com.au/' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
-            </tr>
+        <div>Some places to stay in the area: </div>
+          {/* <br /> */}
+          <table align='center' cellSpacing="10">
+            <tbody>
+              {places}
+            </tbody>
           </table>
+          <div>Note: Some accomodation options such as the Mantra have a minimum of 2 nights stay</div>
           <br />
           Booking Websites:
           <br />
-          <table align='center' cellspacing="10">
-            <tr>
-              <td> Airbnb </td>
-              <td></td>
-              <td> <Button href='https://www.airbnb.com.au/s/Kingscliff--New-South-Wales/all?refinement_paths%5B%5D=%2Ffor_you&place_id=ChIJy10061P_kGsR8C9EkLQJBgU&query=Kingscliff%2C%20New%20South%20Wales&checkin=2018-11-03&checkout=2018-11-04' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
-            </tr>
-            <tr>
-              <td> Booking.com </td>
-              <td></td>
-              <td> <Button href='https://www.booking.com/searchresults.en-gb.html?label=gen173nr-1FCAEoggJCAlhYSDNYBGgPiAEBmAEuuAEHyAEM2AEB6AEB-AELkgIBeagCAw&sid=d478a391d9e933b5e3d37fb9dc7782f8&sb=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.en-gb.html%3Flabel%3Dgen173nr-1FCAEoggJCAlhYSDNYBGgPiAEBmAEuuAEHyAEM2AEB6AEB-AELkgIBeagCAw%3Bsid%3Dd478a391d9e933b5e3d37fb9dc7782f8%3Bsb_price_type%3Dtotal%26%3B&ss=Kingscliff%2C+New+South+Wales%2C+Australia&checkin_monthday=3&checkin_month=11&checkin_year=2018&checkout_monthday=4&checkout_month=11&checkout_year=2018&no_rooms=1&group_adults=2&group_children=0&from_sf=1&ss_raw=kingscl&ac_position=0&ac_langcode=en&dest_id=-1581789&dest_type=city&place_id_lat=-28.25627&place_id_lon=153.577&search_pageview_id=23d0340b1b63000b&search_selected=true&search_pageview_id=23d0340b1b63000b&ac_suggestion_list_length=5&ac_suggestion_theme_list_length=0' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
-            </tr>
+          <table align='center' cellSpacing="10">
+            <tbody>
+              <tr>
+                <td> Airbnb </td>
+                <td></td>
+                <td> <Button href='https://www.airbnb.com.au/s/Kingscliff--New-South-Wales/all?refinement_paths%5B%5D=%2Ffor_you&place_id=ChIJy10061P_kGsR8C9EkLQJBgU&query=Kingscliff%2C%20New%20South%20Wales&checkin=2018-11-03&checkout=2018-11-04' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
+              </tr>
+              <tr>
+                <td> Expedia </td>
+                <td></td>
+                <td> <Button href='https://www.expedia.com.au' style={{color: 'white'}} color='teal' >Take me there</Button> </td>
+              </tr>
+            </tbody>  
           </table>
 
-        </p>
+        {/* </p> */}
         <Image src={seahorses} size='small' centered style={{padding: '1em 0em'}}/>
       </Container>
     ) 
