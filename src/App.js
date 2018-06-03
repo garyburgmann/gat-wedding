@@ -51,7 +51,8 @@ class App extends Component {
   }
 
   verifyToken = async () => {
-    if (!localStorage['token']) {
+    if (localStorage['token'] === 'false') {
+      console.log('TOKEN: ', localStorage['token']);
       this.logout();
       return false;
     }
@@ -62,9 +63,11 @@ class App extends Component {
     }
     try {
       await axios.get(url, { headers: headers })
+      console.log('TOKEN GOOD: ', localStorage['token']);
       return true;
     } catch(err) {
       console.log("TOKEN ERR: ", err);
+      console.log('TOKEN: ', localStorage['token']);
       this.logout();
       return false;
     }
@@ -105,6 +108,18 @@ class App extends Component {
       return <Loading />;
     } else {
       return <AuthComponent isLoggedIn={this.isLoggedIn} />;
+      return (
+        <div style={{minHeight: '100vh'}}>
+          <BrowserRouter>
+            <div style={{minHeight: '100vh'}}>
+              <FixedMenu  />
+              <Switch>
+                <Route path="*" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </div>
+      );
     }
   }
 }
