@@ -38,7 +38,7 @@ export default class AuthComponent extends Component {
 
     axios.post(url, data)
       .then((res) => {
-        console.log("AUTH RES: ", res.data)
+        // console.log("AUTH RES: ", res.data)
         this.props.isLoggedIn(res.data);
       })
       .catch((err) => {
