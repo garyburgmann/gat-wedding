@@ -31,11 +31,12 @@ import EmailService from '../services/EmailService';
 import RSVPService from '../services/RSVPService';
 
 
-export default class ExampleForm extends Component {
+export default class RSVPForm extends Component {
 
   state = {
     email: '',
     names: '',
+    phone: '',
     specialDietary: '',
     seafood: false,
     noSeafood: false,
@@ -74,6 +75,7 @@ export default class ExampleForm extends Component {
         this.setState({
           email: data.email,
           names: data.names,
+          phone: data.phone,
           specialDietary: data.specialDietary,
           seafood: data.seafood,
           noSeafood: data.noSeafood,
@@ -96,25 +98,35 @@ export default class ExampleForm extends Component {
   }
 
   handleInput = (e, { name, value }) => {
-    console.log(name, value);
+    // console.log(name, value);
     this.setState({ [name]: value });
     setTimeout(() => {
-      console.log(this.state);
+      // console.log(this.state);
     }, 1);
   }
 
   handleFood = (e, { name, value }) => {
-    console.log(name, value);
+    // console.log(name, value);
     this.setState({ [name]: !this.state[name] });
     setTimeout(() => {
-      console.log(this.state);
+      // console.log(this.state);
     }, 1);
   }
 
   handleSubmit = async () => {
-    const { attendance, email, names, specialDietary, seafood, noSeafood, vegetarian, extraNotes } = this.state;
+    const { 
+      attendance, 
+      email, 
+      phone, 
+      names, 
+      specialDietary, 
+      seafood, 
+      noSeafood, 
+      vegetarian, 
+      extraNotes 
+    } = this.state;
 
-    console.log(this.state)
+    // console.log(this.state)
     if (attendance === null || names.length < 3 || email.length < 3) {
       // alert('Must set attendance');
       this.setState({ warn: true })
@@ -128,6 +140,7 @@ export default class ExampleForm extends Component {
       const data = {
         attendance: attendance,
         email: email.toLowerCase(),
+        phone: phone,
         names: names,
         specialDietary: specialDietary,
         seafood: seafood,
@@ -138,7 +151,7 @@ export default class ExampleForm extends Component {
 
       this.rsvpService.createRSVP(data)
         .then(rsvp => {
-          console.log('RSVP: ', rsvp);
+          // console.log('RSVP: ', rsvp);
           this.emailService.sendRSVP(data);
           this.setState({ success: true });
           this.showNav();
@@ -159,7 +172,7 @@ export default class ExampleForm extends Component {
   }
 
   handleScreen = (val) => {
-    console.log('HANDLE SCREEN: ', val);
+    // console.log('HANDLE SCREEN: ', val);
     this.setState({ mobile: val });
   }
 
@@ -172,7 +185,7 @@ export default class ExampleForm extends Component {
   // );
 
   render() {
-    const { attendance, names, email, specialDietary, extraNotes, redirect, success, warn } = this.state
+    const { attendance, names, email, phone, specialDietary, extraNotes, redirect, success, warn } = this.state
     let jedi = false;
 
     if (redirect) {
@@ -221,7 +234,7 @@ export default class ExampleForm extends Component {
                 () => this.handleScreen(jedi);
                 // this.handleScreen(jedi);
               }
-              console.log('JEDI: ', jedi);
+              // console.log('JEDI: ', jedi);
               return null;
             } else {
               jedi = false;
@@ -229,7 +242,7 @@ export default class ExampleForm extends Component {
                 () => this.handleScreen(jedi);
                 // this.handleScreen(jedi);
               }
-              console.log('JEDI: ', jedi);
+              // console.log('JEDI: ', jedi);
               return null;
             }
           }}
@@ -259,6 +272,11 @@ export default class ExampleForm extends Component {
 
                     <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
                       <Form.Input placeholder='Your email' name='email' value={email} transparent type='email' onChange={this.handleInput} icon='send outline' iconPosition='left'
+                                  style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0'}} />
+                    </div>
+
+                    <div style={{textAlign: 'center', marginBottom: '2em', fontFamily: `'Libre Baskerville', serif`}}>
+                      <Form.Input placeholder='Contact phone' name='phone' value={phone} transparent type='tel' onChange={this.handleInput} icon='mobile' iconPosition='left'
                                   style={{width: '80%', borderStyle: 'solid', borderWidth: '0px 0px 1px 0px', borderColor: 'teal', margin: '0 0 1em 0'}} />
                     </div>
 

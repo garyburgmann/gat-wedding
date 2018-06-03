@@ -31,7 +31,7 @@ class EmailService {
         `I/We are vegetarian too like that totally awesome dude Gary.` :
         `I/We are meatosaruses.`;
 
-      const specialDietary = `I/we require: ${form.specialDietary}`;
+      const specialDietary = `I/We require: ${form.specialDietary}`;
 
       textString += `<ul>
                        <li> ${seafood} </li>
@@ -50,7 +50,9 @@ class EmailService {
 
     textString += `Kind regards,
                    <br />
-                   ${form.names}`;
+                   ${form.names}
+                   <br />
+                   ${form.phone}`;
 
     const addresses = ['gatpad5@gmail.com', form.email];
 

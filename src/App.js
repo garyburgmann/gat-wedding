@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
-import ExampleForm from './pages/RSVP';
+import RSVPForm from './pages/RSVP';
 // import GoogleApiWrapper from './components/MapComponent';
 import MapComponent from './pages/MapComponent';
 import Loading from './components/Loading';
@@ -92,7 +92,7 @@ class App extends Component {
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
                 {/* <Route path="/location" component={() => (<GoogleApiWrapper />)} /> */}
                 <Route path="/location" component={() => (<MapComponent />)} />
-                <Route path="/rsvp" component={() => (<ExampleForm />)} />
+                <Route path="/rsvp" component={() => (<RSVPForm />)} />
                 <Route path="/auth" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
                 <Route path="/jedi" component={() => (<Jedi logout={this.logout} />)} />
                 <Route path="/gifts" component={() => (<GiftsComponent />)} />
@@ -107,7 +107,7 @@ class App extends Component {
     } else if (isUser === undefined){
       return <Loading />;
     } else {
-      return <AuthComponent isLoggedIn={this.isLoggedIn} />;
+      // return <AuthComponent isLoggedIn={this.isLoggedIn} />;
       return (
         <div style={{minHeight: '100vh'}}>
           <BrowserRouter>
