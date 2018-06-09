@@ -113,7 +113,7 @@ class App extends Component {
         <div style={{minHeight: '100vh'}}>
           <BrowserRouter>
             <div style={{minHeight: '100vh'}}>
-              <FixedMenu  />
+            
               <Switch>
                 <Route path="*" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
               </Switch>
