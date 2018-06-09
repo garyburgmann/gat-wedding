@@ -53,7 +53,7 @@ class App extends Component {
 
   verifyToken = async () => {
     if (localStorage['token'] === 'false') {
-      console.log('TOKEN: ', localStorage['token']);
+      // console.log('TOKEN: ', localStorage['token']);
       this.logout();
       return false;
     }
@@ -68,7 +68,7 @@ class App extends Component {
       return true;
     } catch(err) {
       console.log("TOKEN ERR: ", err);
-      console.log('TOKEN: ', localStorage['token']);
+      console.log('TOKEN ERR: ', localStorage['token']);
       this.logout();
       return false;
     }
@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     const isUser = (localStorage['isLoggedIn'] === 'true');
 
-    console.log(isUser);
+    // console.log(isUser);
     if (isUser) {
       return (
         <div style={{minHeight: '100vh'}}>
