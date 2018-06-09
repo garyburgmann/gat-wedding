@@ -22,7 +22,7 @@ import {
 // } from 'react-form';
 import MediaQuery from 'react-responsive';
 import './RSVP.css';
-import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
+// import desktop from '../assets/images/rsvp-desktop.jpg'; // Tell Webpack this JS file uses this image
 // import mobile from '../assets/images/gat-mobile.jpg'; // Tell Webpack this JS file uses this image
 import seahorses from '../assets/images/seahorses.png'
 // import FixedMenu from '../components/Menu';
@@ -114,16 +114,16 @@ export default class RSVPForm extends Component {
   }
 
   handleSubmit = async () => {
-    const { 
-      attendance, 
-      email, 
-      phone, 
-      names, 
-      specialDietary, 
-      seafood, 
-      noSeafood, 
-      vegetarian, 
-      extraNotes 
+    const {
+      attendance,
+      email,
+      phone,
+      names,
+      specialDietary,
+      seafood,
+      noSeafood,
+      vegetarian,
+      extraNotes
     } = this.state;
 
     // console.log(this.state)
@@ -248,12 +248,10 @@ export default class RSVPForm extends Component {
           }}
         </MediaQuery>
         <Segment
-            inverted
-            style={{height: '95vh', padding: '1em 0em', background: `#000 url('${desktop}') no-repeat center center `, backgroundSize: 'cover', }}
+            style={{height: '95vh', padding: '1em 0em'}}
             vertical
-            raised
         >
-          
+
           <div className='rsvp-form'>
             <Grid style={{ height: '95vh' }} centered>
               <Grid.Column style={{ maxWidth: this.state.mobile ? 700 : 500 }}>

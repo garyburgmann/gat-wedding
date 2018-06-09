@@ -5,13 +5,14 @@ import HomeComponent from './pages/Home';
 import AuthComponent from './pages/Auth';
 import RSVPForm from './pages/RSVP';
 // import GoogleApiWrapper from './components/MapComponent';
-import MapComponent from './pages/MapComponent';
+// import MapComponent from './pages/MapComponent';
 import Loading from './components/Loading';
 import Jedi from './components/Jedi';
 import FixedMenu from './components/Menu';
 import GiftsComponent from './pages/Gifts';
 import AccommodationComponent from './pages/Accommodation';
 import DressCodeComponent from './pages/DressCode';
+import LocationComponent from './pages/Location';
 // import AuthService from './services/AuthService';
 import axios from 'axios';
 import {API_URL} from './settings';
@@ -91,7 +92,7 @@ class App extends Component {
               <Switch>
                 {/* <Route path="/listview" component={() => (<ListView />)} /> */}
                 {/* <Route path="/location" component={() => (<GoogleApiWrapper />)} /> */}
-                <Route path="/location" component={() => (<MapComponent />)} />
+                <Route path="/location" component={() => (<LocationComponent />)} />
                 <Route path="/rsvp" component={() => (<RSVPForm />)} />
                 <Route path="/auth" component={() => (<AuthComponent isLoggedIn={this.isLoggedIn} />)} />
                 <Route path="/jedi" component={() => (<Jedi logout={this.logout} />)} />
