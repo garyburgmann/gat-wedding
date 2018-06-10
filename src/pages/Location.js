@@ -24,18 +24,18 @@ export default class LocationComponent extends Component {
                 <Container text style={{fontFamily: `'Allura', cursive`, padding: '1em 1em', fontSize: '2em', background: `#F7F7F7`}} textAlign='center'>
                   <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Ceremony</Header>
                   <p>
-                    The ceremony is at 4pm NSW time, in Lions Park. <br />
-                    There is limted parking immediately around the park, <br />
-                    but you should at least be able to find parking in a street nearby. <br />
+                    The ceremony is at 4pm NSW time (3pm QLD time), in Lions Park. 
+                    There is limted parking immediately around the park, 
+                    but you should at least be able to find parking in a street nearby.
                   </p>
 
                   <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Reception</Header>
                   <p>
-                    The reception is at 6pm NSW time, at Babalou. <br />
-                    It is only a couple hundred meteres down the road from the ceremony, <br />
-                    so you can easily walk straight there after the ceremony and <br />
-                    have a drink downstairs at the Kingscliff Hotel while we do <br />
-                    our photos etc. <br />
+                    The reception is at 6pm NSW time (5pm QLD time), at Babalou. 
+                    It is only a couple hundred meteres down the road from the ceremony, 
+                    so you can easily walk straight there after the ceremony and 
+                    have a drink downstairs at the Kingscliff Hotel while we do 
+                    our photos etc.
                   </p>
 
                   <p>
@@ -58,14 +58,14 @@ export default class LocationComponent extends Component {
                   <Container text style={{fontFamily: `'Allura', cursive`, padding: '1em 1em', fontSize: '1em', background: `#F7F7F7`}} textAlign='center'>
                     <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Ceremony</Header>
                     <p>
-                      The ceremony is at 4pm NSW time, in Lions Park.
+                      The ceremony is at 4pm NSW time (3pm QLD time), in Lions Park.
                       There is limted parking immediately around the park,
                       but you should at least be able to find parking in a street nearby.
                     </p>
 
                     <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>Reception</Header>
                     <p>
-                      The reception is at 6pm NSW time, at Babalou.
+                      The reception is at 6pm NSW time (5pm QLD time), at Babalou.
                       It is only a couple hundred meteres down the road from the ceremony,
                       so you can easily walk straight there after the ceremony and
                       have a drink downstairs at the Kingscliff Hotel while we do
