@@ -8,6 +8,8 @@ body, html {
   background-color: teal;
 }
 
+img { max-width: 100%; }
+
 .test {
   color: rgb(36, 184, 159);
 }
