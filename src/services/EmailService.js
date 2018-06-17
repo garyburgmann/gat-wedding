@@ -29,7 +29,7 @@ class EmailService {
 
       const vegetarian = form.vegetarian ?
         `I/We are vegetarian too like that totally awesome dude Gary.` :
-        `I/We are meatosaruses.`;
+        `I/We are meatosauruses.`;
 
       const specialDietary = `I/We require: ${form.specialDietary}`;
 
