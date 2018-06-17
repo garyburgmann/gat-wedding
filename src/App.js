@@ -84,7 +84,7 @@ class App extends Component {
     // console.log(isUser);
     if (isUser) {
       return (
-        <div style={{minHeight: '100vh'}}>
+        <div style={{minHeight: '100vh', maxWidth: '100%', minWidth: '100%'}}>
 
           <BrowserRouter>
             <div style={{minHeight: '100vh'}}>
