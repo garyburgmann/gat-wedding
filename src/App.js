@@ -16,6 +16,7 @@ import LocationComponent from './pages/Location';
 // import AuthService from './services/AuthService';
 import axios from 'axios';
 import {API_URL} from './settings';
+import KidsComponent from './pages/Kids';
 
 
 
@@ -99,6 +100,7 @@ class App extends Component {
                 <Route path="/gifts" component={() => (<GiftsComponent />)} />
                 <Route path="/accommodation" component={() => (<AccommodationComponent />)} />
                 <Route path="/dress-code" component={() => (<DressCodeComponent />)} />
+                <Route path="/kids" component={() => (<KidsComponent />)} />
                 <Route path="/" component={() => (<HomeComponent />)} />
               </Switch>
             </div>
