@@ -13,7 +13,7 @@ export default class KidsComponent extends Component {
         <Header style={{fontFamily: `'Allura', cursive`, padding: '0em 0em', fontSize: '1em'}} as='h2'>
           Kids
         </Header>
-        <p>Due to space restricitons we won't be having kids at the reception. 
+        <p>Due to space restrictions we won't be having kids at the reception. 
           If your child is under 1 and still breastfeeding get in touch with us at gatpad5@gmail.com, 
           but otherwise we can't facilitate sorry.
         </p>
